@@ -8,10 +8,6 @@ import {
 import { ApiError } from '../utils/ApiError';
 import { logger } from '../utils/logger';
 
-/**
- * Customer Controller
- * Handles all customer-related operations (CRUD operations)
- */
 
 export class CustomerController {
   private customerService = new CustomerService();
@@ -75,7 +71,7 @@ export class CustomerController {
     }
   }
 
-  /** Retrieves customers with pagination and optional search
+  /** 
    * @swagger
    * /api/customers:
    *   get:
@@ -122,7 +118,7 @@ export class CustomerController {
     }
   }
 
-  /** Retrieves a specific customer and their orders
+  /** 
    * @swagger
    * /api/customers/{id}:
    *   get:
