@@ -9,63 +9,7 @@ import { logger } from '../utils/logger';
 export class AuthController {
   private authService = new AuthService();
 
-  /**
-   * @swagger
-   * /api/auth/login:
-   *   post:
-   *     summary: User login
-   *     description: Authenticate user and return JWT token
-   *     tags: [Authentication]
-   *     requestBody:
-   *       required: true
-   *       content:
-   *         application/json:
-   *           schema:
-   *             type: object
-   *             required:
-   *               - email
-   *               - password
-   *             properties:
-   *               email:
-   *                 type: string
-   *                 format: email
-   *                 example: admin@example.com
-   *               password:
-   *                 type: string
-   *                 example: admin123
-   *     responses:
-   *       200:
-   *         description: Login successful
-   *         content:
-   *           application/json:
-   *             schema:
-   *               type: object
-   *               properties:
-   *                 success:
-   *                   type: boolean
-   *                   example: true
-   *                 data:
-   *                   type: object
-   *                   properties:
-   *                     token:
-   *                       type: string
-   *                     user:
-   *                       type: object
-   *                       properties:
-   *                         id:
-   *                           type: string
-   *                         email:
-   *                           type: string
-   *                         name:
-   *                           type: string
-   *                 message:
-   *                   type: string
-   *                   example: Login successful
-   *       400:
-   *         description: Validation error
-   *       401:
-   *         description: Invalid credentials
-   */
+
   async login(req: Request, res: Response): Promise<void> {
     try {
       // Validate request body
