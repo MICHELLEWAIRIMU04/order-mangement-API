@@ -8,10 +8,15 @@ import {
 import { ApiError } from '../utils/ApiError';
 import { logger } from '../utils/logger';
 
+/**
+ * Customer Controller
+ * Handles all customer-related operations (CRUD operations)
+ */
+
 export class CustomerController {
   private customerService = new CustomerService();
 
-  /**
+  /** create new customer
    * @swagger
    * /api/customers:
    *   post:
@@ -70,7 +75,7 @@ export class CustomerController {
     }
   }
 
-  /**
+  /** Retrieves customers with pagination and optional search
    * @swagger
    * /api/customers:
    *   get:
@@ -117,7 +122,7 @@ export class CustomerController {
     }
   }
 
-  /**
+  /** Retrieves a specific customer and their orders
    * @swagger
    * /api/customers/{id}:
    *   get:
@@ -157,7 +162,7 @@ export class CustomerController {
     }
   }
 
-  /**
+  /** Updates an existing customer's information
    * @swagger
    * /api/customers/{id}:
    *   put:
@@ -213,7 +218,7 @@ export class CustomerController {
     }
   }
 
-  /**
+  /** Removes a customer and all their orders
    * @swagger
    * /api/customers/{id}:
    *   delete:
