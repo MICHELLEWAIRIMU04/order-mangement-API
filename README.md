@@ -95,71 +95,6 @@ ADMIN_EMAIL="admin@example.com"
 ADMIN_PASSWORD="admin123"
 ```
 
-## 🗄️ Database Schema
-
-```prisma
-// prisma/schema.prisma
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  password  String
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@map("users")
-}
-
-model Customer {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String
-  phone     String?
-  address   String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  // Relationships
-  orders Order[]
-
-  @@map("customers")
-}
-
-model Order {
-  id         String      @id @default(cuid())
-  orderNumber String     @unique @default(cuid())
-  status     OrderStatus @default(PENDING)
-  total      Decimal     @db.Decimal(10, 2)
-  notes      String?
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
-
-  // Foreign Keys
-  customerId String
-
-  // Relationships
-  customer Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
-
-  @@map("orders")
-}
-
-enum OrderStatus {
-  PENDING
-  PROCESSING
-  SHIPPED
-  DELIVERED
-  CANCELLED
-}
-```
 
 ## 🔐 API Endpoints
 
@@ -346,13 +281,3 @@ The API includes comprehensive error handling and validation:
 - Response caching where appropriate
 - Rate limiting for API endpoints
 
-## 📚 Additional Resources
-
-- [Prisma Documentation](https://www.prisma.io/docs)
-- [Express.js Guide](https://expressjs.com/en/guide/)
-- [Swagger/OpenAPI Specification](https://swagger.io/specification/)
-- [JWT Best Practices](https://auth0.com/blog/a-look-at-the-latest-draft-for-jwt-bcp/)
-
----
-
-Built with ❤️ using modern Node.js best practices
